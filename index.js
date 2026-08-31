@@ -197,7 +197,7 @@ const commands = [
   new SlashCommandBuilder().setName("remind").setDescription("Send a payment reminder to a customer (owner only).").setDefaultMemberPermissions(0).addStringOption((o) => o.setName("invoice_id").setDescription("Invoice ID.").setRequired(true)).addStringOption((o) => o.setName("message").setDescription("Optional custom message.").setRequired(false)),
   new SlashCommandBuilder().setName("agreements").setDescription("View signed agreements (owner only).").setDefaultMemberPermissions(0),
   new SlashCommandBuilder().setName("payment-log").setDescription("Set the payment/dispute log channel (owner only).").setDefaultMemberPermissions(0).addChannelOption((o) => o.setName("channel").setDescription("Channel for payment and dispute logs.").addChannelTypes(ChannelType.GuildText).setRequired(true)),
-  new SlashCommandBuilder().setName("features").setDescription("View everything this payment bot can do."),
+  new SlashCommandBuilder().setName("Credit").setDescription("View the bot Developer."),
 ].map((cmd) => cmd.setIntegrationTypes?.([0, 1]).setContexts?.([0, 1, 2]).toJSON?.() ?? cmd.toJSON());
 
 client.once(Events.ClientReady, async (readyClient) => {
@@ -337,7 +337,7 @@ async function handleCommand(interaction) {
   if (commandName === "remind") return handleReminder(interaction);
   if (commandName === "agreements") return handleAgreements(interaction);
   if (commandName === "payment-log") return handlePaymentLog(interaction);
-  if (commandName === "features") return handleFeatures(interaction);
+  if (commandName === "Credt") return handleCredit(interaction);
 }
 
 async function handleSetup(interaction) {
@@ -698,15 +698,10 @@ async function sendPaymentLog(guildId, embed) {
   if (channel?.isTextBased()) await channel.send({ embeds: [embed] }).catch(() => null);
 }
 
-async function handleFeatures(interaction) {
-  const embed = new EmbedBuilder().setColor(BLACK).setTitle(`${BRAND}  •  FEATURES`).setDescription([
-    "**Invoicing** — automatic invoice numbers, multiple line items, discounts, due dates, notes and optional customer DMs.",
-    "**Stripe Checkout** — GBP, Terms of Service acknowledgement, automatic Stripe Tax and 3D Secure requests.",
-    "**Subscriptions** — weekly, monthly and yearly recurring Checkout.",
-    "**Payments** — automatic paid-status updates, receipt lookup, payment history and balance checks.",
-    "**Refunds & disputes** — Stripe webhook updates, refund tracking and dispute alerts.",
-    "**Customers** — billing email records and payment history.",
-  ].join("\n\n")).setFooter({ text: `${BRAND} • Professional payment management` }).setTimestamp();
+async function handleCredit(interaction) {
+  const embed = new EmbedBuilder().setColor(BLACK).setTitle(`${BRAND}  •  Credits`).setDescription([
+    "**Bot Development Credits**This bot was fully designed and developed by **@teo.dev_** through **Artic Development**. I built the system from the ground up, including the Discord commands, payment and checkout system,Stripe integration, automated embeds, logs, permissions, customer agreements, fraud/3D Secure support, and the various management features.A lot of time went into making the bot reliable, professional, and easy to use while keeping it customizable for different servers and businesses.**Developer:** @teo.dev_**Development Server:** https://discord.gg/Xmu9B4NcGW**Artic Development** — Custom Discord Bot Development & Systems",
+  ].join("\n\n")).setFooter({ text: `${BRAND} • Titan Development` }).setTimestamp();
   await interaction.reply({ embeds: [embed] });
 }
 
