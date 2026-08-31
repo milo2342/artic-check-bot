@@ -1,5 +1,5 @@
 {
-  "name": "artic-development-checkout",
+  "name": "Arctic-development-checkout",
   "version": "1.0.0",
   "type": "module",
   "main": "index.js",
@@ -10,5 +10,5 @@
     "discord.js": "^14.26.4",
     "stripe": "^18.0.0"
   },
-  "description": "Artic Development Discord + Stripe payment bot"
+  "description": "Arctic Development Discord + Stripe payment bot"
 }
