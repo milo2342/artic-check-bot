@@ -337,7 +337,7 @@ async function handleCommand(interaction) {
   if (commandName === "remind") return handleReminder(interaction);
   if (commandName === "agreements") return handleAgreements(interaction);
   if (commandName === "payment-log") return handlePaymentLog(interaction);
-  if (commandName === "Credt") return handlecredit(interaction);
+  if (commandName === "credit") return handlecredit(interaction);
 }
 
 async function handleSetup(interaction) {
@@ -701,6 +701,7 @@ async function sendPaymentLog(guildId, embed) {
 async function handlecredit(interaction) {
   const embed = new EmbedBuilder().setColor(BLACK).setTitle(`${BRAND}  •  credits`).setDescription([
     "**Bot Development credits**This bot was fully designed and developed by **@teo.dev_** through **Artic Development**. I built the system from the ground up, including the Discord commands, payment and checkout system,Stripe integration, automated embeds, logs, permissions, customer agreements, fraud/3D Secure support, and the various management features.A lot of time went into making the bot reliable, professional, and easy to use while keeping it customizable for different servers and businesses.**Developer:** @teo.dev_**Development Server:** https://discord.gg/Xmu9B4NcGW**Artic Development** — Custom Discord Bot Development & Systems",
+  
   ].join("\n\n")).setFooter({ text: `${BRAND} • Titan Development` }).setTimestamp();
   await interaction.reply({ embeds: [embed] });
 }
